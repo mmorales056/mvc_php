@@ -50,8 +50,9 @@ class MvcController
                             "password"=>$_POST["passwordIngreso"]);
             
             $respuesta = Datos::ingresarUsuarioModel($datosController,"usuarios");
+            
             if ($respuesta["usuario"]==$_POST["usuarioIngreso"] &&
-                $respuesta["password"]==$$_POST["passwordIngreso"]){
+                $respuesta["password"]==$_POST["passwordIngreso"]){
 
                     header("location:index.php?action=usuarios");
             } else {

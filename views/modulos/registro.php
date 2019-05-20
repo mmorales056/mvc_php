@@ -8,7 +8,21 @@
 
 </form>
 
+
+
 <?php
 
 $registro = new MvcController();
 $registro -> registroUsuarioController();
+
+
+    
+    $registro->ingresarUsuarioController();
+        if(isset($_GET["action"])){
+            
+            if($_GET["action"]=="fallo"){
+                echo "fallo al ingresar";
+            }
+        }
+
+    ?>
