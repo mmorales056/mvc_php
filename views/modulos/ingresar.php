@@ -5,3 +5,14 @@
         <input type="password" placeholder="Contraseña" name="passwordIngreso" required >
         <input type="submit" value="Enviar">
     </form>
+
+    <?php
+        $ingreso = new MvcController();
+        $ingreso->ingresarUsuarioController();
+        if(isset($_GET["action"])){
+            if($_GET["action"]=="fallo"){
+                echo "fallo al ingresar";
+            }
+        }
+
+    ?>

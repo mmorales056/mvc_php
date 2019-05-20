@@ -11,6 +11,9 @@
         </tr>
     </thead>
     <tbody>
-
+        <?php
+        $vista = new MvcController();
+        $vista ->vistaUsuariosController();
+        ?>
     </tbody>
 </table>
