@@ -54,6 +54,11 @@ class MvcController
             if ($respuesta["usuario"]==$_POST["usuarioIngreso"] &&
                 $respuesta["password"]==$_POST["passwordIngreso"]){
 
+                    #validando variables de session
+                    #===================================
+                    session_start();
+                        $_SESSION["validar"]=true;
+
                     header("location:index.php?action=usuarios");
             } else {
                 header("location:index.php?action=fallo");
