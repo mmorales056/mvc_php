@@ -1,6 +1,6 @@
 <?php
 class Paginas{
-
+    
   public function enlacesPaginasModel($enlaces){
     if($enlaces  == "ingresar" || 
         $enlaces == "usuarios" ||

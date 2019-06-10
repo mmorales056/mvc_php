@@ -36,5 +36,42 @@ class Datos extends Conexion {
         return $stm->fetchAll();
 
     }
+
+    public function EditarUsuariosModel($datosModel,$tabla){
+        $stmt = Conexion::conectar()->prepare("Select * FROM $tabla WHERE idUsuarios=:id");
+        $stmt->bindParam(":id",$datosModel,PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch();
+
+    }
+
+    public function actualizarDatosModel($datosModel,$tabla){
+        $stmt= Conexion::conectar()->prepare("UPDATE $tabla SET usuario=:usuario,password=:password, email=:email WHERE idUsuarios=:id");
+        #ahora vamos a enlazar parametros
+        $stmt->bindParam(":usuario",$datosModel["usuario"],PDO::PARAM_STR);
+        $stmt->bindParam(":password", $datosModel["password"],PDO::PARAM_STR);
+        $stmt->bindParam(":email",$datosModel["email"],PDO::PARAM_STR);
+        #el where
+        $stmt ->bindParam(":id",$datosModel["id"],PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            return "succes";
+        } else {
+            return "error";
+        }
+        $stmt->close();
+
+    }
+
+    public function borrarUsuariosModel($datosModel,$tabla){
+        $stmt= Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idUsuarios=:id");
+        $stmt->bindParam(":id",$datosModel,PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            return "Success";
+        }else{
+            return "error";
+        }
+        $stmt->close();
+    }
 }
 
